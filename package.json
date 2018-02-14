@@ -1,0 +1,7 @@
+{
+  "name": "postgresio",
+  "version": "0.0.0",
+  "description": "Stream CSV in and out of PostgreSQL",
+  "author": "John Stein",
+  "license": "Unlicense"
+}
