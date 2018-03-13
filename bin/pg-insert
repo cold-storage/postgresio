@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+'use strict';
+
+function helpAndExit() {
+  console.error(`
+  We don't do anything yet.
+`);
+  process.exit(13);
+}
+
+helpAndExit();
