@@ -17,7 +17,7 @@ Usage: ${require('path').basename(__filename)} SQL > some.csv
 if (process.argv.length < 3) {
   helpAndExit();
 }
-const configPath = require('path').join(process.cwd(), './postgresio-config');
+const configPath = require('path').join(process.cwd(), './pgio-config');
 const options = require(configPath).source;
 let query = process.argv[2];
 if (!query.trim().toLowerCase().startsWith('select ') ||

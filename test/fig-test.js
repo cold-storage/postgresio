@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-config = require('../postgresio-config');
+config = require('../pgio-config');
 
 console.log(config.source.ssl);

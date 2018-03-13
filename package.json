@@ -1,6 +1,6 @@
 {
   "name": "postgresio",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stream CSV data in and out of PostgresSQL",
   "author": "John Stein",
   "license": "Unlicense",
