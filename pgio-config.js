@@ -45,21 +45,26 @@
 
 */
 
-exports = module.exports = {
-  source: {
-    host: process.env.PGIO_SRC_HOST || process.env.PGHOST || 'localhost',
-    user: process.env.PGIO_SRC_USER || process.env.PGUSER || 'pgio',
-    database: process.env.PGIO_SRC_DATABASE || process.env.PGDATABASE || 'pgio',
-    password: process.env.PGIO_SRC_PASSWORD || process.env.PGPASSWORD || 'pgio',
-    port: process.env.PGIO_SRC_PORT || process.env.PGPORT || 5432,
-    ssl: process.env.PGIO_SRC_SSL || process.env.PGSSL || true
-  },
-  dest: {
-    host: process.env.PGIO_DEST_HOST || process.env.PGHOST || 'localhost',
-    user: process.env.PGIO_DEST_USER || process.env.PGUSER || 'pgio',
-    database: process.env.PGIO_DEST_DATABASE || process.env.PGDATABASE || 'pgio',
-    password: process.env.PGIO_DEST_PASSWORD || process.env.PGPASSWORD || 'pgio',
-    port: process.env.PGIO_DEST_PORT || process.env.PGPORT || 5432,
-    ssl: process.env.PGIO_DEST_SSL || process.env.PGSSL || true
-  }
-};
+var fs = require('fs');
+if (fs.existsSync('../../candoris/pgio-config.js')) {
+  exports = module.exports = require('../../candoris/pgio-config');
+} else {
+  exports = module.exports = {
+    source: {
+      host: process.env.PGIO_SRC_HOST || process.env.PGHOST || 'localhost',
+      user: process.env.PGIO_SRC_USER || process.env.PGUSER || 'pgio',
+      database: process.env.PGIO_SRC_DATABASE || process.env.PGDATABASE || 'pgio',
+      password: process.env.PGIO_SRC_PASSWORD || process.env.PGPASSWORD || 'pgio',
+      port: process.env.PGIO_SRC_PORT || process.env.PGPORT || 5432,
+      ssl: process.env.PGIO_SRC_SSL || process.env.PGSSL || true
+    },
+    dest: {
+      host: process.env.PGIO_DEST_HOST || process.env.PGHOST || 'localhost',
+      user: process.env.PGIO_DEST_USER || process.env.PGUSER || 'pgio',
+      database: process.env.PGIO_DEST_DATABASE || process.env.PGDATABASE || 'pgio',
+      password: process.env.PGIO_DEST_PASSWORD || process.env.PGPASSWORD || 'pgio',
+      port: process.env.PGIO_DEST_PORT || process.env.PGPORT || 5432,
+      ssl: process.env.PGIO_DEST_SSL || process.env.PGSSL || true
+    }
+  };
+}

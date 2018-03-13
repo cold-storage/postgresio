@@ -1,6 +1,6 @@
 {
   "name": "postgresio",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Stream CSV data in and out of PostgresSQL",
   "author": "John Stein",
   "license": "Unlicense",
@@ -11,6 +11,7 @@
   "dependencies": {
     "csv-stringify": "2.0.4",
     "pg": "7.4.1",
-    "pg-query-stream": "1.1.1"
+    "pg-query-stream": "1.1.1",
+    "require-relative": "0.8.7"
   }
 }

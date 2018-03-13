@@ -4,13 +4,19 @@
 
 function helpAndExit() {
   console.error(`
-Usage: ${require('path').basename(__filename)} SQL > some.csv
+Usage: ${require('path').basename(__filename)} SQL PREPROC > some.csv
 
     Runs SQL query and outputs results to STDOUT as CSV.
 
     SQL can be a string like 'select Id from My_Table' or it can be a file name
     that contains SQL. If SQL starts with 'select' and also contains 'from', we
     assume you passed a query. If not we assume you passed a file path.
+
+    PREPROC is an optional Node.js file to preprocess the SQL. It's often
+    necessary to run a template or other process on the SQL. PREPROC if
+    specified will be required as a node module relative to the current
+    working directory (as opposed to relative to the location of this
+    file).
 `);
   process.exit(13);
 }
@@ -19,11 +25,16 @@ if (process.argv.length < 3) {
 }
 const configPath = require('path').join(process.cwd(), './pgio-config');
 const options = require(configPath).source;
+let originalQuery = process.argv[2];
 let query = process.argv[2];
 if (!query.trim().toLowerCase().startsWith('select ') ||
   !query.toLowerCase().includes(' from ')) {
   // Assume query is a file.
   query = require('fs').readFileSync(query).toString();
+}
+
+if (process.argv[3]) {
+  query = require('require-relative')(process.argv[3])(query, originalQuery);
 }
 
 const {
